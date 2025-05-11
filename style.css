@@ -146,3 +146,8 @@ body{
     text-align: center;
 }
 
+@media (max-width: 350px) {
+    .buttons {
+        top: 70%;
+    }
+}
