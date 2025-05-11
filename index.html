@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorry letter</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong>Здравейте,</strong>
+                        <p>
+                            Съжалявам за казаните думи, бях виновен за това си действие и ще опитам да го променя!! : ) 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+    </div>
+    
+    <div class="buttons"></div>
+    <script>
+        const envelope = document.querySelector('.envelope-wrapper');
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('flap');
+            setTimeout(() => {
+                let newP = document.createElement('p');
+                
+                document.querySelector('.buttons').replaceChildren();
+                
+                newP.textContent = 'Приемаш ли?';
+                
+                newP.style.color = 'white';
+                
+                newP.classList.add('new-p');
+                
+                document.querySelector('.buttons').appendChild(newP);
+                
+                let yesBtn = document.createElement('button');
+                
+                yesBtn.style.color = 'white';
+                yesBtn.textContent = 'Да'
+                yesBtn.classList.add('yesBtn')
+                
+                document.querySelector('.buttons').appendChild(yesBtn);
+                
+                let noBtn = document.createElement('button');
+                
+                noBtn.style.color = 'white';
+                noBtn.textContent = 'Не'
+                noBtn.classList.add('noBtn')
+                
+                document.querySelector('.buttons').appendChild(noBtn);
+                
+                
+                
+                noBtn.addEventListener('click', () => {
+                    if (document.querySelector('.notRightAnswer')) {
+                        document.querySelector('.notRightAnswer').remove();
+                    }
+                    
+                    if (document.querySelector('.rightAnswer')) {
+                        document.querySelector('.rightAnswer').remove();
+                    }
+                    
+                    let newP = document.createElement('p');
+                    
+                    newP.textContent = 'Опа грешка..... Опитай пак!!';
+                    
+                    newP.style.color = 'red';
+                    
+                    newP.classList.add('notRightAnswer')
+                    
+                    document.querySelector('.buttons').appendChild(newP);
+                });
+                
+                yesBtn.addEventListener('click', () => {
+                    if (document.querySelector('.rightAnswer')) {
+                        document.querySelector('.rightAnswer').remove();
+                    }
+                    
+                    if (document.querySelector('.notRightAnswer')) {
+                        document.querySelector('.notRightAnswer').remove();
+                    }
+                    let newP = document.createElement('p');
+                    
+                    newP.textContent = 'Благодаря ти, оценявам го наистина!!';
+                    
+                    newP.style.color = 'green';
+                    
+                    newP.classList.add('rightAnswer')
+                    
+                    document.querySelector('.buttons').appendChild(newP);
+                })
+                
+            }, 2300);
+            
+            if (!envelope.classList.contains('flap')) {
+                setTimeout(() => {
+                    document.querySelector('.buttons').remove();
+                }, 1800);
+            }
+        });
+    </script>
+</body>
+</html>
