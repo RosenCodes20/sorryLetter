@@ -63,7 +63,9 @@
                 
                 
                 
-                noBtn.addEventListener('click', () => {
+                noBtn.addEventListener('click', (e) => {
+                    e.target.remove();
+                    yesBtn.classList.add('removedNoBtn');
                     if (document.querySelector('.notRightAnswer')) {
                         document.querySelector('.notRightAnswer').remove();
                     }

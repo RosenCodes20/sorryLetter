@@ -146,6 +146,10 @@ body{
     text-align: center;
 }
 
+.removedNoBtn {
+    margin: 0 auto;
+}
+
 @media (max-width: 450px) {
     .buttons {
         top: 70%;
